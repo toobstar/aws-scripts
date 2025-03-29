@@ -17,12 +17,12 @@ The [AWS Cost explorer](https://aws.amazon.com/aws-cost-management/aws-cost-expl
 
 3. Each business will have different requirements for how to track cost.  In this example the [filters](cost_filters.py) define the type of activity, and then each activity type is tagged as either a fixed or variable cost.
 
-- Fixed: can change over time but are correlated to more stable cost drivers that are 
-       mostly continuous regardless of what the team are working on that month 
-       (e.g. storage & server capacity)
+    **Fixed**: can change over time but are correlated to more stable cost drivers that are 
+               mostly continuous regardless of what the team are working on that month 
+               (e.g. storage & server capacity)
   
-- Variable: costs are more highly correlated to the activity of the team (e.g. ad hoc analysis).  In theory
-          if no one worked in that time period the costs would be zero
+    **Variable**: costs are more highly correlated to the activity of the team (e.g. ad hoc analysis).  In theory
+               if no one worked in that time period the costs would be zero
 
 
 
