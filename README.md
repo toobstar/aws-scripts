@@ -1,6 +1,6 @@
 # AWS Scripts
 
-### [AWS: Cost Reporter](cost-reporter.py)
+## [AWS: Cost Reporter](cost-reporter.py)
 A simple pattern for extracting cost information from AWS using the [boto3 SDK](https://aws.amazon.com/sdk-for-python/).
 
 The [AWS Cost explorer](https://aws.amazon.com/aws-cost-management/aws-cost-explorer/) is extremely useful for ad hoc cost reporting but it has limitations for ongoing cost tracking.
@@ -9,11 +9,11 @@ The [AWS Cost explorer](https://aws.amazon.com/aws-cost-management/aws-cost-expl
 
 - The filters & grouping capabilities of the Cost Explorer UI are powerful, but lack the ability to be combined (using boolean logic) for more advanced tracking.  When using the API and simple object modelling this is quite easy to achieve.
 
-## General Comments on AWS Cost Tracking
+### General Comments on AWS Cost Tracking
 
 1. Use AWS accounts to delineate cost centres as much as possible.  Being able to filter by account is a full-proof separator that will capture all costs.
 
-2. Invariably tagging & tracking services by name will locate most but not all of the cost in your bill. The gaps will be hard to allocate and where you aren't using a multi-account approach as in point (1) these will be present.
+2. Invariably tagging & tracking services by name will locate most but not all of the cost in your bill. The gaps will be hard to allocate and where you aren't using a multi-account approach as in point (1) these will be present.  This script attempts resolve that by firstly determining the total cost for the month.  After doing the filter based reporting, it then determines the gap to the total and uses that to scale up the results so they match.  This approach is not 100% correct obviously, but is a low effort solution, and based on the % adjustment you can decide whether it's acceptable.  Obviously tinkering with the filters can improve this outcome if that's needed. 
 
 3. Each business will have different requirements for how to track cost.  In this example the [filters](cost_filters.py) define the type of activity, and then each activity type is tagged as either a fixed or variable cost.
 
@@ -26,5 +26,10 @@ The [AWS Cost explorer](https://aws.amazon.com/aws-cost-management/aws-cost-expl
 
 
 
-## How to use the script
-- The goal 
+### How to use the script
+
+- Consider the right [filters](cost_filters.py) for your needs
+- The script is setup for monthly reporting to be run at the start of the next month.  You can work out when to run it because AWS will send the invoice as soon as they have closed out costs for the previous month.
+- For an initial setup you would want to collect all history available so could extend the time period manually.
+- The output is in a CSV format suitable for pushing to a spreadsheet.  This could be run in [Lambda](https://aws.amazon.com/lambda/) or from a point external to AWS.
+
