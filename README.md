@@ -24,7 +24,7 @@ A simple pattern for extracting cost information from AWS using the [boto3 SDK](
     **Variable**: costs are more highly correlated to the activity of the team (e.g. ad hoc analysis).  In theory
                if no one worked in that time period the costs would be zero
 
-
+4. By using a solution outside of AWS it's easier to merge with the cost of other vendors
 
 ### How to use the script
 
