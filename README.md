@@ -33,4 +33,11 @@ A simple pattern for extracting cost information from AWS using the [boto3 SDK](
 - For an initial setup you would want to collect all history available so could extend the time period manually.
 - The output is in a CSV format suitable for pushing to a spreadsheet.  This could be run in [Lambda](https://aws.amazon.com/lambda/) or from a point external to AWS.
 - An approach that worked well for me is to then use this data-source in a BI Dashboard like [PowerBI](https://www.microsoft.com/en-us/power-platform/products/power-bi) or [Looker Studio](https://cloud.google.com/looker).
+- In order to be able to run the script you need to [get credentials for API access in the environment that the Python script will run in](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html#sso-configure-profile-token-auto-sso).
 
+```
+export AWS_ACCESS_KEY_ID="??"
+export AWS_SECRET_ACCESS_KEY="??"
+export AWS_SESSION_TOKEN="??"
+python cost-reporter.py
+```
