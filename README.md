@@ -28,8 +28,9 @@ A simple pattern for extracting cost information from AWS using the [boto3 SDK](
 
 ### How to use the script
 
-- Consider the right [filters](cost_filters.py) for your needs
-- The script is setup for monthly reporting to be run at the start of the next month.  You can work out when to run it because AWS will send the invoice as soon as they have closed out costs for the previous month.
+- Consider the right [filters](cost_filters.py) for your needs.  Some examples are included.  Also note that I've translated the AWS zones into friendly regional groupings that were appropriate for this. 
+- The script is setup for monthly reporting to be run at the start of the next month.  You can work out when to run it because AWS will send the invoice as soon as they have closed out costs for the previous month or it could be scheduled with some buffer to ensure all costs have arrived.
 - For an initial setup you would want to collect all history available so could extend the time period manually.
 - The output is in a CSV format suitable for pushing to a spreadsheet.  This could be run in [Lambda](https://aws.amazon.com/lambda/) or from a point external to AWS.
+- An approach that worked well for me is to then use this data-source in a BI Dashboard like [PowerBI](https://www.microsoft.com/en-us/power-platform/products/power-bi) or [Looker Studio](https://cloud.google.com/looker).
 
