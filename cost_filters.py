@@ -1,5 +1,5 @@
 # Internal region lookup
-regionLookup = {
+region_lookup = {
     'NoRegion': 'Other',
     'global': 'Other',
     'af-south-1': 'Other',     # South Africa
